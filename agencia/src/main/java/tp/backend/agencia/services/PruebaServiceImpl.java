@@ -68,6 +68,11 @@ public class PruebaServiceImpl extends ServiceImpl<Prueba, Integer> implements P
         return pruebaRepository.findAll(example);
     }
 
+    @Override
+    public Prueba getPruebaEnCursoVehiculo(Integer idVehiculo) {
+        return null;
+    }
+
     public List<Prueba> getPruebasEnCurso(Vehiculo vehiculo) {
         Prueba ejemploPruebaActiva = new Prueba();
         ejemploPruebaActiva.setVehiculo(vehiculo);

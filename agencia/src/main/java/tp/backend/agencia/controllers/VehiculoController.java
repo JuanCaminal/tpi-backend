@@ -3,8 +3,12 @@ package tp.backend.agencia.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tp.backend.agencia.models.Empleado;
 import tp.backend.agencia.models.Posicion;
 import tp.backend.agencia.models.Prueba;
+import tp.backend.agencia.models.Vehiculo;
+import tp.backend.agencia.services.interfaces.InteresadoService;
+import tp.backend.agencia.services.interfaces.PosicionService;
 import tp.backend.agencia.services.interfaces.PruebaService;
 import tp.backend.agencia.services.interfaces.VehiculoService;
 
@@ -18,30 +22,44 @@ import java.util.Optional;
 public class VehiculoController {
     private final VehiculoService vehiculoService;
 
-    private final PruebaService pruebaService;
+    private final PosicionService posicionService;
 
-    @GetMapping("{id_vehiculo}/{id_prueba}/posicion")
-    public ResponseEntity<Posicion> getPosicionActual(@PathVariable Integer id_vehiculo, @PathVariable Integer id_prueba) {
+    private final InteresadoService interesadoService;
+
+    @GetMapping("{id_vehiculo}/posicion")
+    public ResponseEntity<Posicion> getPosicionActual(@PathVariable Integer id_vehiculo) {
         try {
+            //obtener vehiculo acaaa
 
+            Vehiculo vehiculo = this.vehiculoService.findById(id_vehiculo);
 
+            Prueba pruebaEnCurso = vehiculo.getPruebaEnCurso();
 
-            Posicion posicion = this.vehiculoService.getPosicionActual(id_vehiculo);
+            Posicion posicionActual = vehiculo.getPosicionActual();
 
-            Boolean esRiesgosa = this.esPosicionRiesgosa(posicion);
+            if (pruebaEnCurso != null && posicionActual != null) {
+                Posicion posicionPeligroObtenido = this.posicionService.verificarZonaPeligrosa(posicionActual);
 
-            if (esRiesgosa) {
+                if (posicionPeligroObtenido != null && posicionPeligroObtenido.getEsRiesgosa()) {
+
+                    this.interesadoService.restringirInteresado(pruebaEnCurso.getInteresado());
+
+                    this.notificarEmpleado(pruebaEnCurso.getEmpleado());
+                }
+
             }
 
-            return ResponseEntity.ok().body(posicion);
+
+            return ResponseEntity.ok().body(posicionActual);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    private Boolean esPosicionRiesgosa(Posicion posicion) {
-        //consumir API
-        return false;
+    private void notificarEmpleado(Empleado empleado) {
+        //mandarle notificacion al empleado a cargo de la prueba
+
     }
+
 
 }

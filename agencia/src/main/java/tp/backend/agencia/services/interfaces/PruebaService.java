@@ -10,7 +10,7 @@ public interface PruebaService extends Service<Prueba, Integer> {
 
     public List<Prueba> getPruebasEnCurso();
 
-
+    public Prueba getPruebaEnCursoVehiculo(Integer idVehiculo);
 
     public void finalizarPrueba(Integer idPrueba, String comentario);
 }

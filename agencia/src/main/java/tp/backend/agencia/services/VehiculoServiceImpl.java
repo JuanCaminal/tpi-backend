@@ -51,4 +51,24 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Integer> implemen
         Vehiculo vehiculo = this.findById(idVehiculo);
         return vehiculo.getPosicionActual();
     }
+
+    @Override
+    public Posicion getPosicionActualAndAnlizarRiesgo(Integer idVehiculo) {
+        Posicion posicion = this.getPosicionActual(idVehiculo);
+
+
+        return this.esPosicionRiesgosa(posicion);
+    }
+
+    private void notificarEmpleado() {
+
+    }
+
+    private Posicion esPosicionRiesgosa(Posicion posicion) {
+        //consumir API
+
+        posicion.setEsRiesgosa(Boolean.FALSE);
+
+        return posicion;
+    }
 }

@@ -21,6 +21,9 @@ public class Posicion {
     @Column(name = "FECHA_HORA", nullable = false)
     private LocalDateTime fechaHora;
 
+    @Column(name = "ES_RIESGOSA", nullable = false)
+    private Boolean esRiesgosa;
+
     @Column(name = "LATITUD", nullable = false)
     private Double latitud;
 

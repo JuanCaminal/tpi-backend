@@ -29,6 +29,9 @@ public class Vehiculo {
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Posicion> posiciones;
 
+    @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prueba> pruebas;
+
 
     public Vehiculo(String patente, Modelo modelo) {
         this.patente = patente;
@@ -37,7 +40,16 @@ public class Vehiculo {
     }
 
     public Posicion getPosicionActual() {
-        return posiciones.stream().max(Comparator.comparing(Posicion::getFechaHora)).orElse(null);
+        return posiciones.stream()
+                        .max(Comparator.comparing(Posicion::getFechaHora))
+                        .orElse(null);
+    }
+
+    public Prueba getPruebaEnCurso() {
+        return pruebas.stream()
+                    .filter(prueba -> prueba.getFechaHoraFin() == null)
+                    .findFirst()
+                    .orElse(null);
     }
 
 }
