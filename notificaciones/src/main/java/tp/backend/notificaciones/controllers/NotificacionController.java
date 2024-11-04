@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tp.backend.notificaciones.dto.NotificacionEmpleadoDto;
 import tp.backend.notificaciones.dto.PublicidadDto;
 import tp.backend.notificaciones.models.Destinatario;
+import tp.backend.notificaciones.models.NotificacionEmpleado;
 import tp.backend.notificaciones.models.NotificacionPublicidad;
 import tp.backend.notificaciones.services.interfaces.NotificacionEmpleadoService;
 import tp.backend.notificaciones.services.interfaces.NotificacionPublicidadService;
@@ -34,6 +36,26 @@ public class NotificacionController {
             nuevaNotificacion.setDestinatarios(publicidadDto.getDestinatarios());
 
             NotificacionPublicidad nuevaNotificacionPublicidad = this.notificacionPublicidadService.create(nuevaNotificacion);
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevaNotificacionPublicidad.getId());
+
+        } catch (IllegalArgumentException e) {
+            // Devuelve 400 para errores de validación
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/empleado")
+    public ResponseEntity<Object> enviarNotificacionEmpleado(@RequestBody NotificacionEmpleadoDto publicidadDto) {
+        try {
+
+            NotificacionEmpleado nuevaNotificacion = new NotificacionEmpleado();
+            nuevaNotificacion.setMensaje(publicidadDto.getMensaje());
+            nuevaNotificacion.setMedio(publicidadDto.getMedio());
+            nuevaNotificacion.setEmpleado(publicidadDto.getEmpleado());
+
+            NotificacionEmpleado nuevaNotificacionPublicidad = this.notificacionEmpleadoService.create(nuevaNotificacion);
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevaNotificacionPublicidad.getId());
 
         } catch (IllegalArgumentException e) {
