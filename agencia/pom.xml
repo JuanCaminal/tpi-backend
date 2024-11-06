@@ -83,12 +83,25 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 			<version>4.1.3</version>
 		</dependency>
+
 		<dependency>
 			<groupId>tp.backend</groupId>
 			<artifactId>notificaciones</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
