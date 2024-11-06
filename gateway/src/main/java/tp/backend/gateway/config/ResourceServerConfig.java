@@ -17,33 +17,22 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ResourceServerConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(authorize -> authorize
-                // Esta ruta puede ser accedida por cualquiera, sin autorización
-                .requestMatchers("/publico/**")
-                .permitAll()
+        http
+                .authorizeHttpRequests(authorize -> authorize
+                        // Endpoints accesibles solo por empleados
+                        .requestMatchers(HttpMethod.POST, "/api/test-drives/**").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.POST, "/api/notifications/**").hasRole("EMPLOYEE")
 
-                // Esta ruta puede ser accedida únicamente por usuarios autenticados con el rol de administrador
-                .requestMatchers("/protegido-administradores/**")
-                .hasRole("ADMIN")
+                        // Endpoints accesibles solo por usuarios asociados a vehículos
+                        .requestMatchers(HttpMethod.POST, "/api/vehicles/**").hasRole("VEHICLE_USER")
 
-                // esta ruta puede ser accedida únicamente por usuario autenticados
-                // con el rol de usuario o administrador
-                .requestMatchers("/protegido-usuarios/**")
-                .hasAnyRole("USUARIO", "ADMIN")
+                        // Endpoints accesibles solo por administradores
+                        .requestMatchers(HttpMethod.GET, "/api/reports/**").hasRole("ADMIN")
 
-                // Protegido mixto, GET para "USUARIO" y "ADMIN"
-                .requestMatchers(HttpMethod.GET, "/protegido-mixto/**")
-                .hasAnyRole("USUARIO", "ADMIN")
-
-                // Protegido mixto, POST para "ADMIN"
-                .requestMatchers(HttpMethod.POST, "/protegido-mixto/**")
-                .hasRole("ADMIN")
-
-                // Cualquier otra petición...
-                .anyRequest()
-                .authenticated()
-
-        ).oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
+                        // Cualquier otra petición requiere autenticación
+                        .anyRequest().authenticated()
+                )
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
         return http.build();
     }
 
