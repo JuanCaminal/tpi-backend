@@ -1,10 +1,32 @@
-# Trabajo Práctico Integrador  
+# Trabajo Práctico Integrador Grupo {nro}
 **Backend de Aplicaciones 2024**
 
+## Integrantes del grupo
+- 
+-
+-
+-
+-
+-
+-
+
+
+## Aplicación
 
 Explicar la distribución de responsabilidades en los microservicios y los endpoints disponibles desde el gateway
 
 Explicar el procedimiento necesario para levantar el gateway y los microservicios
+
+### Gateway
+Explicacion de como funciona la gateway
+
+
+### Microservicio 1
+Explicacion de como funciona el microservicio 1
+
+
+### Microservicio 2
+Explicacion de como funciona el microservicio 2
 
 
 
