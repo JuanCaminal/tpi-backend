@@ -49,7 +49,7 @@ public class VehiculoController {
 
                     this.interesadoService.restringirInteresado(pruebaEnCurso.getInteresado());
 
-                    this.enviarNotificacionEmpleado();
+                    this.enviarNotificacionEmpleado(null);
                 }
 
             }
