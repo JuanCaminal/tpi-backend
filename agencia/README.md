@@ -1,0 +1,1 @@
+Incluir el procedimiento para levantar la aplicacion, y la estructura de componentes
