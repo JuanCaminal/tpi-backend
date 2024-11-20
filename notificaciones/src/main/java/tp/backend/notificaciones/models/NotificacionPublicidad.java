@@ -16,7 +16,12 @@ public class NotificacionPublicidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "notificacion", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany
+    @JoinTable(
+        name = "notificacion_destinatario",
+        joinColumns = @JoinColumn(name = "notificacion_id"),
+        inverseJoinColumns = @JoinColumn(name = "destinatario_id")
+    )    
     private List<Destinatario> destinatarios;
 
     @Column(name = "MENSAJE")
