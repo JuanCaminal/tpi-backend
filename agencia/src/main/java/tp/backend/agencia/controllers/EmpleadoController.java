@@ -23,7 +23,7 @@ public class EmpleadoController {
         this.empleadoService = empleadoService;
     }
 
-    @GetMapping
+    @GetMapping("obtener-empleado")
     public List<Empleado> getAllEmpleados() {
         return empleadoService.getAllEmpleados();
     }

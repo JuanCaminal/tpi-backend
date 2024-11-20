@@ -11,7 +11,8 @@ public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "LEGAJO", nullable = false)
+    private Integer legajo;
 
     @Column(name = "NOMBRE", nullable = false)
     private String nombre;
@@ -20,8 +21,7 @@ public class Empleado {
     private String apellido;
 
     @Column(name = "TELEFONO_CONTACTO")
-    private String telefono;
+    private Double telefono;
 
-    @Column(name = "MAIL")
-    private String mail;
+
 }
