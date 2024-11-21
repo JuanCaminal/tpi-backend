@@ -2,7 +2,7 @@
 **Backend de Aplicaciones 2024**
 
 ## Integrantes del grupo
-- 
+- Reyna Benjamin - 84244
 -
 -
 -
@@ -15,18 +15,24 @@
 
 Explicar la distribución de responsabilidades en los microservicios y los endpoints disponibles desde el gateway
 
-Explicar el procedimiento necesario para levantar el gateway y los microservicios
+Ejecutar `mvn clean install -X` si se realizan cambios en las dependencias, para asegurar que todas se encuentren y de haber fallas tener un log completo en `target/surefire-reports`
+
+Para acceder al Swagger ir a `http://localhost:{port}/swagger-ui/index.html` remplazando `{port}` por el puerto que corresponda
+
 
 ### Gateway
 Explicacion de como funciona la gateway
 
 
-### Microservicio 1
-Explicacion de como funciona el microservicio 1
+### Agencia
+Este microservicio contiene la mayor parte de la funcionalidad del sistema, puesto que separarlo más resultaba en mucho acomplamiento entre microservicios
 
 
-### Microservicio 2
-Explicacion de como funciona el microservicio 2
+### Notificaciones
+Funcionalidades de generación de notificaciones
+
+### Reportes
+Funcionanilidades de generación de reportes
 
 
 
