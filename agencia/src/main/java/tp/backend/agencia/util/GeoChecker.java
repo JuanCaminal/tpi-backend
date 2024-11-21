@@ -2,7 +2,7 @@ package tp.backend.agencia.util;
 
 import java.util.List;
 
-import tp.backend.agencia.models.Agency;
+import tp.backend.agencia.models.Agencia;
 import tp.backend.agencia.models.RestrictedArea;
 
 public class GeoChecker {
@@ -35,18 +35,18 @@ public class GeoChecker {
 
     // Main check: If a point is allowed based on radius and restricted areas
     public static boolean isAllowedPoint(double pointLat, double pointLon, 
-                                         Agency agency, 
+                                         Agencia agency, 
                                          List<RestrictedArea> restrictedAreas) {
         // Check if the point is within the agency's radius
-        if (haversineDistance(pointLat, pointLon, agency.getLatitude(), agency.getLongitude()) > agency.getAllowedRadius()) {
+        if (haversineDistance(pointLat, pointLon, agency.getCoordenadas().getLat(), agency.getCoordenadas().getLon()) > agency.getRadioPermitido()) {
             return false;
         }
 
         // Check if the point lies in any restricted area
         for (RestrictedArea area : restrictedAreas) {
             if (isPointInRectangle(pointLat, pointLon, 
-                                   area.getNorthwestLatitude(), area.getNorthwestLongitude(),
-                                   area.getSoutheastLatitude(), area.getSoutheastLongitude())) {
+                                   area.getNoroeste().getLat(), area.getNoroeste().getLon(),
+                                   area.getSureste().getLat(), area.getSureste().getLon())) {
                 return false; // The point is in a restricted area
             }
         }
