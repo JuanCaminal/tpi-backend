@@ -3,7 +3,7 @@ package tp.backend.agencia.models;
 import lombok.Data;
 
 @Data
-public class RestrictedArea {
+public class AreaRestringida {
 
     private Coordenadas noroeste;
     private Coordenadas sureste;

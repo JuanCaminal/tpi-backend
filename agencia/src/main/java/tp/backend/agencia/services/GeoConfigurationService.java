@@ -2,6 +2,8 @@ package tp.backend.agencia.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import tp.backend.agencia.models.Agencia;
 import tp.backend.agencia.models.GeoConfigurationWrapper;
 
 @Service
@@ -13,11 +15,11 @@ public class GeoConfigurationService {
         this.webClient = webClientBuilder.baseUrl("https://labsys.frc.utn.edu.ar").build();
     }
 
-    public GeoConfigurationWrapper fetchConfiguracion() {
+    public Agencia fetchConfiguracion() {
         return webClient.get()
                 .uri("/apps-disponibilizadas/backend/api/v1/configuracion/")
                 .retrieve()
-                .bodyToMono(GeoConfigurationWrapper.class)
+                .bodyToMono(Agencia.class)
                 .block(); // Blocking for simplicity, consider alternatives for non-blocking calls
     }
 }
