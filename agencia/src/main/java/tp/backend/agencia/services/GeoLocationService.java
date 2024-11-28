@@ -4,14 +4,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import tp.backend.agencia.models.Agencia;
-import tp.backend.agencia.models.GeoConfigurationWrapper;
 
 @Service
-public class GeoConfigurationService {
+public class GeoLocationService {
 
     private final WebClient webClient;
 
-    public GeoConfigurationService(WebClient.Builder webClientBuilder) {
+    public GeoLocationService(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl("https://labsys.frc.utn.edu.ar").build();
     }
 

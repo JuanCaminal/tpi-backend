@@ -16,9 +16,15 @@ public class GWConfig {
                                         @Value("${tpi-backend.url-microservicio-notificaciones}") String uriNotificaciones)  {
         return builder.routes()
                 // Ruteo al Microservicio de Personas
-                .route(p -> p.path("/api/agencia/**").uri(uriAgencia))
+                .route(p -> p.path("/api/agencia/**")
+                .filters(f -> f.stripPrefix(2))
+                .uri(uriAgencia))
+                
+
                 // Ruteo al Microservicio de Entradas
-                .route(p -> p.path("/api/notificaciones/**").uri(uriNotificaciones))
+                .route(p -> p.path("/api/notificaciones/**")
+                .filters(f -> f.stripPrefix(2))
+                .uri(uriNotificaciones))
                 .build();
     }
 }

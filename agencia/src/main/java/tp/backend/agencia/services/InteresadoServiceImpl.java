@@ -1,6 +1,5 @@
 package tp.backend.agencia.services;
 
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import tp.backend.agencia.models.Interesado;
