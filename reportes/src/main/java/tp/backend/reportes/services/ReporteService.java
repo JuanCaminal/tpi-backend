@@ -1,4 +1,4 @@
-package tp.backend.reportes;
+package tp.backend.reportes.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

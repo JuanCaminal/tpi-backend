@@ -1,4 +1,4 @@
-package tp.backend.reportes;
+package tp.backend.controllers;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tp.backend.reportes.clases.Incidente;
 import tp.backend.reportes.clases.Prueba;
+import tp.backend.reportes.services.ReporteService;
 
 @RestController
 @RequestMapping("/reportes")
