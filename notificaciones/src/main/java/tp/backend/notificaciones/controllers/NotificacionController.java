@@ -14,7 +14,6 @@ import tp.backend.notificaciones.models.NotificacionPublicidad;
 import tp.backend.notificaciones.services.interfaces.NotificacionEmpleadoService;
 import tp.backend.notificaciones.services.interfaces.NotificacionPublicidadService;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController

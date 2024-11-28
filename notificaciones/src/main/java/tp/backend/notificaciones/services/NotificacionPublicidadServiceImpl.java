@@ -2,10 +2,8 @@ package tp.backend.notificaciones.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import tp.backend.notificaciones.models.NotificacionEmpleado;
 import tp.backend.notificaciones.models.NotificacionPublicidad;
 import tp.backend.notificaciones.repositories.NotificacionPublicidadRepository;
-import tp.backend.notificaciones.services.interfaces.NotificacionEmpleadoService;
 import tp.backend.notificaciones.services.interfaces.NotificacionPublicidadService;
 
 import java.util.List;
