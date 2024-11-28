@@ -1,15 +1,6 @@
 # Trabajo Práctico Integrador Grupo {nro}
 **Backend de Aplicaciones 2024**
 
-## Integrantes del grupo
-- Reyna Benjamin - 84244
--
--
--
--
--
--
-
 
 ## Aplicación
 
@@ -21,7 +12,6 @@ Para acceder al Swagger ir a `http://localhost:{port}/swagger-ui/index.html` rem
 
 
 ### Gateway
-Explicacion de como funciona la gateway
 
 
 ### Agencia
