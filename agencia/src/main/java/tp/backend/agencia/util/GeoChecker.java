@@ -1,7 +1,5 @@
 package tp.backend.agencia.util;
 
-import java.util.List;
-
 import tp.backend.agencia.models.Agencia;
 import tp.backend.agencia.models.Coordenadas;
 import tp.backend.agencia.models.AreaRestringida;

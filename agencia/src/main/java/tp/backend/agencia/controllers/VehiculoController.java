@@ -5,19 +5,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tp.backend.agencia.client.NotificacionApiClient;
 import tp.backend.agencia.dto.NotificacionEmpleadoDto;
-import tp.backend.agencia.models.Empleado;
 import tp.backend.agencia.models.Posicion;
 import tp.backend.agencia.models.Prueba;
 import tp.backend.agencia.models.Vehiculo;
 import tp.backend.agencia.services.interfaces.InteresadoService;
 import tp.backend.agencia.services.interfaces.PosicionService;
-import tp.backend.agencia.services.interfaces.PruebaService;
 import tp.backend.agencia.services.interfaces.VehiculoService;
 
 
-import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/vehiculos")

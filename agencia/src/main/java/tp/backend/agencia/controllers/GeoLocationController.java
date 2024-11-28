@@ -6,22 +6,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import tp.backend.agencia.models.Agencia;
 import tp.backend.agencia.models.Coordenadas;
-import tp.backend.agencia.services.GeoConfigurationService;
+import tp.backend.agencia.services.GeoLocationService;
 import tp.backend.agencia.util.GeoChecker;
 
 
 @RestController
-public class GeoConfigurationController {
+public class GeoLocationController {
 
     @Autowired
-    private GeoConfigurationService geoConfigurationService;
+    private GeoLocationService geoLocationService;
 
-    @GetMapping("/api/v1/configuration")
+    @GetMapping("/api/v1/location")
     public Agencia getGeoConfiguration() {
-        return geoConfigurationService.fetchConfiguracion();
+        return geoLocationService.fetchConfiguracion();
     }
 
     @PostMapping("/check-restricted-area")
@@ -30,7 +29,7 @@ public class GeoConfigurationController {
         coordenadas.setLat(lat);
         coordenadas.setLon(lon);
         System.err.println("Received point: " + coordenadas);
-        return GeoChecker.isAllowedPoint(coordenadas, geoConfigurationService.fetchConfiguracion());
+        return GeoChecker.isAllowedPoint(coordenadas, geoLocationService.fetchConfiguracion());
     }
 
     

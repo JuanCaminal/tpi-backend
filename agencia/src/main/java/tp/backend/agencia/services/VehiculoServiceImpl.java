@@ -60,10 +60,6 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Integer> implemen
         return this.esPosicionRiesgosa(posicion);
     }
 
-    private void notificarEmpleado() {
-
-    }
-
     private Posicion esPosicionRiesgosa(Posicion posicion) {
         //consumir API
 
